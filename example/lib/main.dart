@@ -79,6 +79,7 @@ class HomePage extends StatelessWidget {
               favorite: <String>['SE'],
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
+              showDragHandle: true,
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
@@ -108,16 +109,17 @@ class HomePage extends StatelessWidget {
                   fontSize: 18,
                 ),
               ),
-              header: Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 20.0, right: 20.0),
-                child: const Text(
-                  'Select your country',
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+              // Optional. Custom list header above search bar
+              // header: Padding(
+              //   padding: const EdgeInsets.only(top: 10.0, bottom: 10.0, left: 20.0, right: 20.0),
+              //   child: const Text(
+              //     'Select your country',
+              //     style: TextStyle(
+              //       fontSize: 22,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
             );
           },
           child: const Text('Show country picker'),

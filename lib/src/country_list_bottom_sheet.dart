@@ -17,16 +17,24 @@ void showCountryListBottomSheet({
   bool searchAutofocus = false,
   bool showWorldWide = false,
   bool showSearch = true,
+  bool showDragHandle = true,
   bool useSafeArea = false,
   bool useRootNavigator = false,
   bool moveAlongWithKeyboard = false,
   Widget header = const SizedBox.shrink(),
 }) {
+  final ShapeBorder shape = RoundedRectangleBorder(
+    borderRadius: countryListTheme?.borderRadius ??
+        const BorderRadius.vertical(top: Radius.circular(24)),
+  );
+
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    backgroundColor: Colors.transparent,
+    backgroundColor: Colors.white,
+    shape: shape,
     useSafeArea: useSafeArea,
+    showDragHandle: showDragHandle,
     useRootNavigator: useRootNavigator,
     builder: (context) => _builder(
       context,
@@ -101,24 +109,18 @@ Widget _builder(
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-        child: Column(
-          children: [
-            header,
-            Flexible(
-              child: CountryListView(
-                onSelect: onSelect,
-                exclude: exclude,
-                favorite: favorite,
-                countryFilter: countryFilter,
-                showPhoneCode: showPhoneCode,
-                countryListTheme: countryListTheme,
-                searchAutofocus: searchAutofocus,
-                showWorldWide: showWorldWide,
-                showSearch: showSearch,
-                customFlagBuilder: customFlagBuilder,
-              ),
-            ),
-          ],
+        child: CountryListView(
+          onSelect: onSelect,
+          exclude: exclude,
+          favorite: favorite,
+          countryFilter: countryFilter,
+          showPhoneCode: showPhoneCode,
+          countryListTheme: countryListTheme,
+          searchAutofocus: searchAutofocus,
+          showWorldWide: showWorldWide,
+          showSearch: showSearch,
+          customFlagBuilder: customFlagBuilder,
+          header: header,
         ),
       ),
     ),
