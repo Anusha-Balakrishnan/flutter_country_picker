@@ -31,7 +31,7 @@ void showCountryListBottomSheet({
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
-    backgroundColor: Colors.white,
+    backgroundColor: countryListTheme?.backgroundColor,
     shape: shape,
     useSafeArea: useSafeArea,
     showDragHandle: showDragHandle,
@@ -77,23 +77,6 @@ Widget _builder(
       device - (statusBarHeight + (kToolbarHeight / 1.5));
   final width = countryListTheme?.bottomSheetWidth;
 
-  Color? _backgroundColor = countryListTheme?.backgroundColor ??
-      Theme.of(context).bottomSheetTheme.backgroundColor;
-
-  if (_backgroundColor == null) {
-    if (Theme.of(context).brightness == Brightness.light) {
-      _backgroundColor = Colors.white;
-    } else {
-      _backgroundColor = Colors.black;
-    }
-  }
-
-  final BorderRadius _borderRadius = countryListTheme?.borderRadius ??
-      const BorderRadius.only(
-        topLeft: Radius.circular(40.0),
-        topRight: Radius.circular(40.0),
-      );
-
   return Padding(
     padding: moveAlongWithKeyboard
         ? MediaQuery.of(context).viewInsets
@@ -103,10 +86,6 @@ Widget _builder(
       width: width,
       padding: countryListTheme?.padding,
       margin: countryListTheme?.margin,
-      decoration: BoxDecoration(
-        color: _backgroundColor,
-        borderRadius: _borderRadius,
-      ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         child: CountryListView(

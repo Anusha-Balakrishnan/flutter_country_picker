@@ -79,7 +79,7 @@ class HomePage extends StatelessWidget {
               favorite: <String>['SE'],
               //Optional. Shows phone code before the country name.
               showPhoneCode: true,
-              showDragHandle: true,
+              showDragHandle: false,
               onSelect: (Country country) {
                 print('Select country: ${country.displayName}');
               },
