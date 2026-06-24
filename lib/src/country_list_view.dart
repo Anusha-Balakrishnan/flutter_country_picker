@@ -219,15 +219,15 @@ class _CountryListViewState extends State<CountryListView> {
             children: <Widget>[
               Row(
                 children: [
-                  const SizedBox(width: 20),
+                  const SizedBox(width: 15),
                   if (widget.customFlagBuilder == null)
                     _flagWidget(country)
                   else
                     widget.customFlagBuilder!(country),
                   if (widget.showPhoneCode && !country.iswWorldWide) ...[
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 10),
                     SizedBox(
-                      width: 45,
+                      width: 60,
                       child: Text(
                         '${isRtl ? '' : '+'}${country.phoneCode}${isRtl ? '+' : ''}',
                         style: _textStyle,
@@ -235,7 +235,7 @@ class _CountryListViewState extends State<CountryListView> {
                     ),
                     const SizedBox(width: 5),
                   ] else
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 10),
                 ],
               ),
               Expanded(
